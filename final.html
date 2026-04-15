@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>❤️</title>
+<style>
+body{
+margin:0;
+background:#4169E1;
+overflow:hidden;
+font-family:Arial;
+color:white;
+text-align:center;
+}
+.container{
+padding:30px;
+z-index:2;
+position:relative;
+}
+.texto{
+font-size:18px;
+line-height:1.6;
+max-width:800px;
+margin:auto;
+min-height:200px;
+}
+#contador{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+}
+.coracao{
+position:absolute;
+top:-10px;
+animation:cair linear infinite;
+}
+@keyframes cair{
+0%{transform:translateY(0);}
+100%{transform:translateY(100vh);}
+}
+.amor{
+position:absolute;
+bottom:-20px;
+font-size:14px;
+animation:subir linear infinite;
+}
+@keyframes subir{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>💙</h2>
+<p id="texto" class="texto"></p>
+<div id="contador"></div>
+</div>
+<script>
+const mensagem = `SIMMMMMMM MEU AMOR, ESTAMOS COMPLETANDO 2 MESES JUNTOS, E ESTOU SUPER FELIZ, DE VERDADE, VOCÊ FOI A MELHOR COISA QUE ACONTECEU NA MINHA VIDA, DESDE QUE TE CONHECI MINHA VIDA MUDOU MUITO, PRA MELHOR, E DESDE ENTÃO VENHO SENDO FELIZ DIARIAMENTE, EU DOU SORRISINHOS BOBOS QUANDO PENSO EM VC, É AUTOMÁTICO, VOCÊ É PERFEITA MEU AMOR, AMO CADA PEDACINHO SEU E DA PESSOA QUE VC É, FORTEZ CORAJOSA, É MUITOOOOOOOOOOOOOOO LINDAAAAAAAA, MARAVILHOSAAAAAAAAAA, E SUPER FOFINHA, AMO SEU OLHINHO, SUA BOCA, AMOOOOO TUDO MEU AMOOOOOOOR, NUNCA VOU ME ARREPENDER DE TER TE CONHECIDO, ESPERO QUE AGENTE DÊ CERTO, DE VERDADE, ORO TODOS OS DIAS PARA DEUS TE PROTEJER E DÁ SAÚDE, E QUE UM DIA AGENTE POSSA VIVER JUNTOS, EU TE AMOOOOOOO MUIITO MEU AMOR, COM TODA MINHA ALMA, INFINITAMENTEEEEEEE💗💗`;
+
+let i = 0;
+function digitar(){
+if(i < mensagem.length){
+document.getElementById("texto").innerHTML += mensagem.charAt(i);
+i++;
+setTimeout(digitar, 30);
+}
+}
+digitar();
+
+const dataInicio = new Date("2026-02-15 00:00:00");
+
+function atualizarContador(){
+const agora = new Date();
+const diff = agora - dataInicio;
+
+const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+const minutos = Math.floor((diff / (1000 * 60)) % 60);
+const segundos = Math.floor((diff / 1000) % 60);
+
+document.getElementById("contador").innerHTML =
+`💖 Estamos juntos há ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+}
+
+setInterval(atualizarContador, 1000);
+
+setInterval(()=>{
+let coracao = document.createElement("div");
+coracao.classList.add("coracao");
+coracao.innerHTML = "❤️";
+coracao.style.left = Math.random() * 100 + "vw";
+coracao.style.animationDuration = (3 + Math.random()*5) + "s";
+document.body.appendChild(coracao);
+setTimeout(()=>{coracao.remove();}, 8000);
+}, 300);
+
+setInterval(()=>{
+let amor = document.createElement("div");
+amor.classList.add("amor");
+amor.innerHTML = "Eu te amo ❤️";
+amor.style.left = Math.random() * 100 + "vw";
+amor.style.animationDuration = (4 + Math.random()*6) + "s";
+document.body.appendChild(amor);
+setTimeout(()=>{amor.remove();}, 10000);
+}, 500);
+</script>
+</body>
+</html>
